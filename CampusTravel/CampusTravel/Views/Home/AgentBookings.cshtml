@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CampusTravel.Models.AgentViewModels>
+@{
+    ViewBag.Title = "Agent Bookings";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Agent</th>
+                <th>Office</th>
+                <th>Sales</th>
+                <th>Total</th>
+            </tr>
+            @foreach (var agent in Model)
+            {
+                <tr>
+                    <th>@agent.agentName</th>
+                    <th>@agent.officeLocation</th>
+                    <th>@agent.numBookings</th>
+                    <th>@agent.total</th>
+                </tr>
+            }
+        </table>
+
+</div>
+</body>
+</html>

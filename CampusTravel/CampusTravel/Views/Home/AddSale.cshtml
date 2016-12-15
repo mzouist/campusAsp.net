@@ -1,0 +1,70 @@
+﻿@model CampusTravel.Models.SaleViewModels
+@{
+    ViewBag.Title = "Add Sale";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+
+            <fieldset>
+                <div>Date</div>
+                <div>
+                    @Html.TextBoxFor(m => m.saleDate)
+                </div>
+                <div>Agent</div>
+                <div>
+                    @{ 
+                        CampusTravel.Models.CampusDB campusdb = new CampusTravel.Models.CampusDB();
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        List<CampusTravel.Models.AgentViewModels> list = campusdb.GetAgents();
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = list[i].agentName,
+                                Value = list[i].agentId.ToString()
+                            });
+
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.agentName, listItems, "-- Select Agent --")
+                </div>
+                <div>Amount</div>
+                <div>@Html.TextBoxFor(m => m.amount)</div>
+                <div>
+                    Destination
+                </div>
+                <div>
+                    @{
+                        List<SelectListItem> listItems2 = new List<SelectListItem>();
+                        List<CampusTravel.Models.DestinationViewModel> list2 = campusdb.GetDestination();
+                        for (int i = 0; i < list2.Count; i++)
+                        {
+                            listItems2.Add(new SelectListItem
+                            {
+                                Text = list2[i].destinationName,
+                                Value = list2[i].destinationId.ToString()
+                            });
+
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.destinationName, listItems2, "-- Select Destination --")
+                </div>
+                <br />
+                <input type="submit" value="Add" />
+            </fieldset>
+            
+
+        }
+    </div>
+</body>
+</html>

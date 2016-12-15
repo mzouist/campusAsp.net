@@ -1,0 +1,55 @@
+﻿@model CampusTravel.Models.AgentViewModels
+@*@model IEnumerable<CampusTravel.Models.AgentViewModels>*@
+@{
+    ViewBag.Title = "Add Agent";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            
+            <fieldset>
+                <div>
+                    Name: 
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.agentName)
+                </div>
+                <div>
+                    Office Location:
+                </div>
+                <div>
+                    @{
+                        CampusTravel.Models.CampusDB campusdb = new CampusTravel.Models.CampusDB();
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        List<CampusTravel.Models.AgentViewModels> list = campusdb.GetLocations();
+                        for(int i = 0; i < list.Count; i++)
+                        {
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = list[i].officeLocation,
+                                Value = list[i].officeId.ToString()
+                            });
+
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.officeLocation, listItems, "-- Select Location --")
+                </div>
+                <br />
+                <input type="submit" value="Add" />
+            </fieldset>
+            
+        }
+    
+    </div>
+</body>
+</html>

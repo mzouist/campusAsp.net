@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Campus Travel</h1>
+    <p class="lead">A long time ago in a galaxy far, far away.... </p>
+    @*<p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        @*<li>@Html.ActionLink("Agent Booking", "Index", "Home")</li>
+        <li>@Html.ActionLink("Add Agent", "About", "Home")</li>
+        <li>@Html.ActionLink("Display Sales", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Add Sales", "Contact", "Home")</li>*@
+        <h2>Agent Bookings</h2>
+        <p>
+           See list of agents that are being booked.
+        </p>
+        @Html.ActionLink("View Bookings", "AgentBookings", "Home", new {@class="btn btn-default"})
+        @*<p><a class="btn btn-default">View Bookings</a></p> @*Use ActionLink*@
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-3">
+        <h2>Add Agents</h2>
+        <p>Add a new agent to available booking list</p>
+        @Html.ActionLink("Add Agent", "AddAgent", "Home", new { @class="btn btn-default"})
+        @*<p><a class="btn btn-default">View Bookings</a></p>*@
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-3">
+        <h2>Dispaly Sales</h2>
+        <p>Check out list of sales each agent has.</p>
+        @Html.ActionLink("Display Sales", "Sale", "Home", new { @class = "btn btn-default" })
+        @*<p><a class="btn btn-default">View Bookings</a></p>*@
+        <p>@*<a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>*@</p>
+    </div>
+    <div class="col-md-3">
+        <h2>Add Sales</h2>
+        <p>Insert sale to an agent.</p>
+        @*<p><a class="btn btn-default">View Bookings</a></p>*@
+        @Html.ActionLink("Add Sales", "AddSale", "Home", new { @class = "btn btn-default" })
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CampusTravel.Models.SaleViewModels>
+@{
+    ViewBag.Title = "Sale";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Destination</th>
+                <th>Agent</th>
+                <th>Office</th>
+            </tr>
+            @foreach (var sale in Model)
+            {
+                string @shortdate = @sale.saleDate.ToShortDateString();
+                <tr>
+                    <th>@shortdate</th>
+                    <th>@sale.amount</th>
+                    <th>@sale.destinationName</th>
+                    <th>@sale.agentName</th>
+                    <th>@sale.officeLocation</th>
+                </tr>
+            }
+        </table>
+
+</div>
+</body>
+</html>
